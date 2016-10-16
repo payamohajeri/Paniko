@@ -12,16 +12,20 @@ case $1 in
     pelican content
   ;;
   "publish")
+    python ./paniko.py
     counter=0
     for link in `cat ./links`; do
       echo "Title: Image $counter" > ./www/content/$counter.md
       echo "Date: $now" >> ./www/content/$counter.md
       echo "Category: Instagram" >> ./www/content/$counter.md
       echo "Very very beautiful image :)" >> ./www/content/$counter.md
-      echo "![image][$link]" >> ./www/content/$counter.md
+      echo "![image]($link)" >> ./www/content/$counter.md
       let counter++
     done
-    rm ./links
+    #rm ./links
+  ;;
+  "update:gh-pages")
+    echo 'post-commit started' && pelican /Users/Payam/Projects/Paniko/paniko/www/content -o /Users/Payam/Projects/Paniko/paniko/www/output -s /Users/Payam/Projects/Paniko/paniko/www/pelicanconf.py && ghp-import /Users/Payam/Projects/Paniko/paniko/www/output && git push origin gh-pages
   ;;
   "install")
     pip install ghp-import pelican markdown requests

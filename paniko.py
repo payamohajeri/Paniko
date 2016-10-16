@@ -13,7 +13,7 @@ import time
 
 links=open('./links', 'w+')
 
-bot = InstaBot(login="instapepel", password="A2As@Q&CEs4XvSj")
+bot = InstaBot(login="", password="")
 bot.get_media_id_recent_feed()
 for feed in bot.media_on_feed:
     links.write(feed["display_src"] + "\n")
