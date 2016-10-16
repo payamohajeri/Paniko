@@ -14,8 +14,11 @@ case $1 in
   "publish")
     counter=0
     for link in `cat ./links`; do
-      cat ./templates/image > ./www/content/$counter.md
-      echo "![image]["$link"]" >> ./www/content/$counter.md
+      echo "Title: Image $counter" > ./www/content/$counter.md
+      echo "Date: $now" >> ./www/content/$counter.md
+      echo "Category: Instagram" >> ./www/content/$counter.md
+      echo "Very very beautiful image :)" >> ./www/content/$counter.md
+      echo "![image][$link]" >> ./www/content/$counter.md
       let counter++
     done
     #rm ./links
