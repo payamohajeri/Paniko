@@ -11,4 +11,11 @@ from unfollow_protocol import unfollow_protocol
 from follow_protocol import follow_protocol
 import time
 
-bot = InstaBot(login="username", password="password")
+links=open('./links', 'w+')
+
+bot = InstaBot(login="instapepel", password="A2As@Q&CEs4XvSj")
+bot.get_media_id_recent_feed()
+for feed in bot.media_on_feed:
+    links.write(feed["display_src"] + "\n")
+
+exit()
