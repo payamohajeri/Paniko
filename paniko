@@ -21,7 +21,7 @@ case $1 in
       echo "![image][$link]" >> ./www/content/$counter.md
       let counter++
     done
-    #rm ./links
+    rm ./links
   ;;
   "install")
     pip install ghp-import pelican markdown requests
