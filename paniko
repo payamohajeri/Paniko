@@ -4,7 +4,8 @@ now="$(date +'%Y%m%d')"
 
 case $1 in
   "init")
-    echo "pelican `pwd`/www/content -o `pwd`/www/output -s `pwd`/www/pelicanconf.py && ghp-import `pwd`/www/output && git push origin gh-pages" > .git/hooks/post-commit
+    echo "echo 'post-commit started' && pelican `pwd`/www/content -o `pwd`/www/output -s `pwd`/www/pelicanconf.py && ghp-import `pwd`/www/output && git push origin gh-pages" > .git/hooks/post-commit
+    chmod +x .git/hooks/post-commit
   ;;
   "content")
     cd ./www
