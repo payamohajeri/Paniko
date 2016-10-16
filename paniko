@@ -12,6 +12,7 @@ case $1 in
     pelican content
   ;;
   "publish")
+    rm ./www/content/*.md
     python ./paniko.py
     counter=0
     for link in `cat ./links`; do
@@ -22,7 +23,7 @@ case $1 in
       echo "![image]($link)" >> ./www/content/$counter.md
       let counter++
     done
-    #rm ./links
+    rm ./links
   ;;
   "update:gh-pages")
     echo 'post-commit started' && pelican /Users/Payam/Projects/Paniko/paniko/www/content -o /Users/Payam/Projects/Paniko/paniko/www/output -s /Users/Payam/Projects/Paniko/paniko/www/pelicanconf.py && ghp-import /Users/Payam/Projects/Paniko/paniko/www/output && git push origin gh-pages
