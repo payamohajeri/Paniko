@@ -1,0 +1,19 @@
+#!/bin/bash
+
+now="$(date +'%Y%m%d')"
+
+case $1 in
+  "content")
+    cd ./www
+    pelican content
+  ;;
+  "install")
+    pip install ghp-import pelican markdown requests
+  ;;
+  "init")
+    echo "pelican -s `pwd`/www/pelicanconf.py . && ghp-import output && git push origin gh-pages" >> .git/hooks/post-commit
+  ;;
+  *)
+    echo "WTF !"
+  ;;
+esac

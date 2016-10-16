@@ -87,3 +87,6 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+www/output/
+www/content/*.md
